@@ -16,22 +16,25 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MyButton } from "../components/MyButton";
 import Colors from '../constants/Colors';
 import { HorizontalPickerView } from "../components/HorizontalPickerView";
+import { MyPickerView } from "../components/MyPickerView";
 
+var values = [ "Stress", "Rhume", "Dépression", "Tensions", "Test3", "Test1", "Test2", "Test4", "Test5", "Test6" ];
 export default class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            currentValue: "Dépression",
         };
     }
 
     render() {
+        const { currentValue } = this.state;
         return (
             <LinearGradient
                 colors={[Colors.mainColor, Colors.gradientColor]}
                 style={styles.gradientBackground}
             >
-                <ScrollView>
+                <View>
                     <View style={styles.titleContainer}>
                         <H1 style={styles.titleLabel}>MIKAO</H1>
                         <LinearGradient
@@ -45,7 +48,8 @@ export default class HomeScreen extends React.Component {
                         <Text style={styles.selectByLabel}>Sélectionner par</Text>
                     </View>
                     <HorizontalPickerView />
-                </ScrollView>
+                    <MyPickerView selectedValue={currentValue} values={values}/>
+                </View>
                 <MyButton disabled={true}>OK</MyButton>
             </LinearGradient>
         );
