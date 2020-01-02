@@ -9,20 +9,23 @@ export class HorizontalPickerView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: "Symptôme"
+            type: props.typeValue
         };
     }
 
     onChange(position) {
+        let type = "Symptôme"
         if(position <= 180) {
             this.setState({
-                type: "Symptôme"
+                type
             });
         } else if(position > 180) {
+            type = "Soins"
             this.setState({
-                type: "Soins"
+                type
             });
-        } 
+        }
+        this.props.onChange(type);
     }
 
     render() {
@@ -48,8 +51,6 @@ export class HorizontalPickerView extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        marginTop: wp("5%"),
         justifyContent: 'center',
         alignItems: 'center',
     },

@@ -9,20 +9,13 @@ export class MyButton extends React.Component {
     this.state = {
         
     };
-    //this.moveAnimation = new Animated.ValueXY({ x: 0, y: 0 })
   }
-
-  /*moveLabelType = () => {
-    Animated.spring(this.moveAnimation, {
-      toValue: {x: 10, y: 10},
-    }).start()
-  }*/
 
   render() {
     return (
       <TouchableOpacity
         disabled={!this.props.exception && this.props.disabled}
-        onPress={() => {}}
+        onPress={this.props.onClick}
         style={[this.props.style, this.props.disabled ? styles.disabled : styles.enabled, styles.button]}>
         <Text {...this.props} style={[ this.props.disabled ? styles.disabled : styles.enabled, styles.label]} />
       </TouchableOpacity>
@@ -47,20 +40,10 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   disabled: {
-      backgroundColor: "white",
+      backgroundColor: "lightgray",
   },
   enabled: {
       backgroundColor: Colors.mainColor,
       color: "white",
   },
 });
-
-/*
-<Animated.View style={[ this.moveAnimation.getLayout()]}>
-        <TouchableWithoutFeedback
-              disabled={!this.props.exception && this.props.disabled}
-              onPress={() => {this.props.exception && this.moveLabelType}} style={[this.props.style, this.props.disabled ? styles.disabled : styles.enabled, styles.button]}>
-            <Text {...this.props} style={[ this.props.disabled ? styles.disabled : styles.enabled, styles.label]} />
-        </TouchableWithoutFeedback>
-      </Animated.View>
-*/

@@ -11,10 +11,20 @@ export class MyPickerView extends React.Component {
         };
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.values != prevProps.values) {
+            this.setState({
+                values: this.props.values
+            });
+        }
+    }
+
+
     changeValue(v) {
         this.setState({
-            selectedValue: v,
+            selectedValue: v.name,
         })
+        this.props.onChange(v);
     }
 
     render() {
@@ -24,8 +34,8 @@ export class MyPickerView extends React.Component {
                 {values.length > 0 && (
                     <View>
                         {values && values.map(v => (
-                            <View key={v} style={[v == selectedValue && styles.selectedBloc]}>
-                                 <Text onPress={() => {this.changeValue(v)}} style={[v == selectedValue ? styles.selectedLabel : styles.label]}>{v}</Text>
+                            <View key={v.id} style={[v.name == selectedValue && styles.selectedBloc]}>
+                                 <Text onPress={() => {this.changeValue(v)}} style={[v.name == selectedValue ? styles.selectedLabel : styles.label]}>{v.name}</Text>
                             </View>
                         ))}
                     </View>

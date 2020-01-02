@@ -31,20 +31,20 @@ export default function App(props) {
 async function loadResourcesAsync() {
     await Promise.all([
         Asset.loadAsync([
-            require("./assets/images/robot-dev.png"),
-            require("./assets/images/robot-prod.png")
+            require("./src/assets/images/robot-dev.png"),
+            require("./src/assets/images/robot-prod.png")
         ]),
         Font.loadAsync({
             // This is the font that we are using for our tab bar
             ...Ionicons.font,
             // We include SpaceMono because we use it in HomeScreen.js. Feel free to
             // remove this if you are not using it in your app
-            "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf"),
-            "roboto": require("./assets/fonts/Roboto-Regular.ttf"),
-            "roboto-condensed": require("./assets/fonts/RobotoCondensed-Regular.ttf"),
-            "roboto-condensed-bold": require("./assets/fonts/RobotoCondensed-Bold.ttf"),
-            "louis-george-cafe": require("./assets/fonts/LouisGeorgeCafe.ttf"),
-            "louis-george-cafe-bold": require("./assets/fonts/LouisGeorgeCafeBold.ttf"),
+            "space-mono": require("./src/assets/fonts/SpaceMono-Regular.ttf"),
+            "roboto": require("./src/assets/fonts/Roboto-Regular.ttf"),
+            "roboto-condensed": require("./src/assets/fonts/RobotoCondensed-Regular.ttf"),
+            "roboto-condensed-bold": require("./src/assets/fonts/RobotoCondensed-Bold.ttf"),
+            "louis-george-cafe": require("./src/assets/fonts/LouisGeorgeCafe.ttf"),
+            "louis-george-cafe-bold": require("./src/assets/fonts/LouisGeorgeCafeBold.ttf"),
         })
     ]);
 }

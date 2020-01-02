@@ -1,7 +1,7 @@
 const tintColor = '#2f95dc';
-const mainColor = '#b7f0e2'; // #25AB99
-const gradientColor = '#48a38f';
-const labelColor = 'white';
+const mainColor = '#84E7CF'; // #25AB99
+const gradientColor = '#84E7CF';
+const labelColor = 'lightgrey';
 
 export default {
   tintColor,
