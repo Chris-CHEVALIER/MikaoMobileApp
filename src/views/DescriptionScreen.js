@@ -39,6 +39,13 @@ export default class DescriptionScreen extends ViewComponentBase {
         });
     };
 
+    onChange = (v, t) => {
+        this.setState({
+            selectedValue: v,
+            typeValue: t
+        })
+    }
+
     render() {
         const navigation = this.props.navigation;
         const { selectedValue, symptoms, typeValue } = this.state;
@@ -68,20 +75,18 @@ export default class DescriptionScreen extends ViewComponentBase {
                 </View>
                 <View style={styles.descriptionBloc}>
                     <H3>{selectedValue.treatments ? "Soins" : "Symptômes"}</H3>
-                    <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignItems: "flex-start"}}>
                     
                         { typeValue === "Symptôme" && selectedValue.treatments.length > 0 ? ( selectedValue.treatments.map(treatmentId => {
                             treatment = TreatmentStore.getById(treatmentId);
-                            return <TouchableOpacity key={treatmentId} onPress={() => this.setState({selectedValue: treatment, typeValue: "Soins"}) }><Text style={styles.selectByLabel}>{treatment.name}</Text></TouchableOpacity>
+                            return <TouchableOpacity key={treatmentId} onPress={() => this.onChange(TreatmentStore.getById(treatmentId), "Soins") }><Text style={styles.selectByLabel}>{treatment.name}</Text></TouchableOpacity>
                         })) : (
                             typeValue === "Soins" && mySymptoms.length > 0 ? mySymptoms.map(symptom => {
-                                return <TouchableOpacity key={symptom.id} onPress={() => this.setState({selectedValue: symptom, typeValue: "Symptôme"}) }><Text style={styles.selectByLabel}>{symptom.name}</Text></TouchableOpacity>
+                                return <TouchableOpacity key={symptom.id} onPress={() => this.onChange(symptom, "Symptôme") }><Text style={styles.selectByLabel}>{symptom.name}</Text></TouchableOpacity>
                             }) : (
                                 <Text style={styles.selectByLabel}>Aucune donnée.</Text>
                             )
                         )}
-                        
-                        
                     </View>
                     { selectedValue.treatments && selectedValue.treatments.length <= 0 && <Text style={styles.selectByLabel}>Aucune donnée.</Text>}
                 </View>
@@ -122,7 +127,10 @@ const styles = StyleSheet.create({
         fontFamily: "louis-george-cafe",
     },
     descriptionBloc: {
-        margin: wp("8%"),
+        marginLeft: wp("7%"),
+        marginRight: wp("3%"),
+        marginTop: wp("2%"),
+        marginBottom: wp("2%"),
     },
 });
 

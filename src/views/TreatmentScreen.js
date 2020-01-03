@@ -22,7 +22,7 @@ export default class TreatmentScreen extends ViewComponentBase {
         const treatments = TreatmentStore.getTreatments();
         this.state = {
             loading: true,
-            selectedValue: symptoms[0],
+            selectedValue: null,
             typeValue: "Symptôme",
             symptoms,
             treatments,
@@ -70,7 +70,8 @@ export default class TreatmentScreen extends ViewComponentBase {
 
     handleChange = (type) => {
         this.setState({
-            typeValue: type
+            typeValue: type,
+            selectedValue: null,
         })
     }
 

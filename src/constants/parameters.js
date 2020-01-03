@@ -1,5 +1,5 @@
 var Parameters = {
-    ApiUrl: "http://dddd9b9e.ngrok.io/api"
+    ApiUrl: "http://5b7def37.ngrok.io/api"
 };
 
 export default (Parameters);

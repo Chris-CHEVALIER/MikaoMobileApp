@@ -5,14 +5,6 @@ import {
 } from "react-native";
 
 import { MenuIcon } from "../components/MenuIcon";
-import { Layout } from "../components/Layout";
-import { LinearGradient } from "expo-linear-gradient";
-import { H1 } from "../components/H1";
-import {
-    widthPercentageToDP as wp,
-    heightPercentageToDP as hp
-} from "react-native-responsive-screen";
-import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
